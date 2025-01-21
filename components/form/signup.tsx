@@ -100,7 +100,11 @@ export function SignupForm({
                   )}
                 />
               </div>
-              <Button type='submit' className='w-full'>
+              <Button
+                type='submit'
+                className='w-full'
+                disabled={form.formState.isSubmitting}
+              >
                 {t('Create an account')}
               </Button>
               {/* <Button variant='outline' className='w-full'>

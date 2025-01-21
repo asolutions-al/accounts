@@ -2,17 +2,23 @@ import { SignOutBtn } from '@/components/button'
 import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
 
-async function Page() {
+const Page = async () => {
+  const client = await createClient()
+  const {
+    data: { user },
+  } = await client.auth.getUser()
+
   const signOut = async () => {
     'use server'
 
-    const supabase = await createClient()
-    await supabase.auth.signOut()
+    const client = await createClient()
+    await client.auth.signOut()
     return redirect('/login')
   }
+
   return (
     <div>
-      hello
+      <p>Hello {user?.email}</p>
       <SignOutBtn performAction={signOut} />
     </div>
   )

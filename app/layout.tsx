@@ -1,8 +1,6 @@
 import { Toaster } from '@/components/ui/sonner'
-import { TooltipProvider } from '@/components/ui/tooltip'
+import { TranslationProvider } from '@/providers'
 import { GeistSans } from 'geist/font/sans'
-import { NextIntlClientProvider } from 'next-intl'
-import { getMessages } from 'next-intl/server'
 import './globals.css'
 
 export const metadata = {
@@ -15,15 +13,14 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const messages = await getMessages()
   return (
-    <html lang='en' className={GeistSans.className}>
-      <NextIntlClientProvider messages={messages}>
-        <TooltipProvider>
-          <body className='min-h-screen'>{children}</body>
+    <html lang='en' className={GeistSans.className} suppressHydrationWarning>
+      <TranslationProvider>
+        <body>
+          {children}
           <Toaster />
-        </TooltipProvider>
-      </NextIntlClientProvider>
+        </body>
+      </TranslationProvider>
     </html>
   )
 }

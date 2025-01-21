@@ -3,7 +3,7 @@ import { user as schUser } from '@/supabase/migrations/schema'
 import { db } from '@/utils/supabase/database'
 import { createClient } from '@/utils/supabase/server'
 
-async function SignupPage() {
+const Page = () => {
   return (
     <SignupForm
       performAction={async (values) => {
@@ -27,4 +27,4 @@ async function SignupPage() {
   )
 }
 
-export default SignupPage
+export default Page

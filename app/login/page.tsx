@@ -1,15 +1,17 @@
-import { LoginForm, LoginSchemaType } from '@/components/form'
+import { LoginForm } from '@/components/form'
 import { createClient } from '@/utils/supabase/server'
 
-async function LoginPage() {
-  const signIn = async (values: LoginSchemaType) => {
-    'use server'
-    const supabase = await createClient()
-    const res = await supabase.auth.signInWithPassword(values)
-    return res
-  }
-
-  return <LoginForm performAction={signIn} />
+const Page = () => {
+  return (
+    <LoginForm
+      performAction={async (values) => {
+        'use server'
+        const supabase = await createClient()
+        const res = await supabase.auth.signInWithPassword(values)
+        return res
+      }}
+    />
+  )
 }
 
-export default LoginPage
+export default Page
