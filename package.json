@@ -4,7 +4,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "drizzle:introspect": "drizzle-kit introspect"
+    "drizzle:introspect": "drizzle-kit introspect",
+    "fmt": "prettier --write ."
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.5.4",
@@ -62,6 +63,8 @@
     "@types/react": "18.2.48",
     "@types/react-dom": "18.2.18",
     "drizzle-kit": "^0.23.0",
-    "encoding": "^0.1.13"
+    "encoding": "^0.1.13",
+    "prettier": "^3.4.2",
+    "prettier-plugin-tailwindcss": "^0.6.11"
   }
 }

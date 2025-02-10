@@ -1,9 +1,9 @@
-import { AnimatedLogoSvg } from '@/components/svg'
+import { AnimatedLogoSvg } from "@/components/svg"
 
 const Loading = () => {
   return (
-    <div className='h-full w-full flex items-center justify-center'>
-      <div className='w-24 sm:w-32'>
+    <div className="flex h-full w-full items-center justify-center">
+      <div className="w-24 sm:w-32">
         <AnimatedLogoSvg />
       </div>
     </div>

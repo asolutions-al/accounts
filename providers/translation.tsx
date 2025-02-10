@@ -1,6 +1,6 @@
-import { NextIntlClientProvider } from 'next-intl'
-import { getMessages } from 'next-intl/server'
-import { PropsWithChildren } from 'react'
+import { NextIntlClientProvider } from "next-intl"
+import { getMessages } from "next-intl/server"
+import { PropsWithChildren } from "react"
 
 const TranslationProvider = async ({ children }: PropsWithChildren) => {
   const messages = await getMessages()

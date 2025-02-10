@@ -1,6 +1,6 @@
-import { SignOutBtn } from '@/components/button'
-import { createClient } from '@/utils/supabase/server'
-import { redirect } from 'next/navigation'
+import { SignOutBtn } from "@/components/button"
+import { createClient } from "@/utils/supabase/server"
+import { redirect } from "next/navigation"
 
 const Page = async () => {
   const client = await createClient()
@@ -9,11 +9,11 @@ const Page = async () => {
   } = await client.auth.getUser()
 
   const signOut = async () => {
-    'use server'
+    "use server"
 
     const client = await createClient()
     await client.auth.signOut()
-    return redirect('/login')
+    return redirect("/login")
   }
 
   return (
