@@ -8,7 +8,7 @@ const Page = () => {
         "use server"
         const supabase = await createClient()
         const res = await supabase.auth.signInWithPassword(values)
-        return { error: { message: res.error?.message } }
+        return { error: res.error?.message || null }
       }}
     />
   )

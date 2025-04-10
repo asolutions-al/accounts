@@ -21,7 +21,9 @@ const Page = () => {
           })
         }
 
-        return res
+        return {
+          error: res.error?.message || null,
+        }
       }}
     />
   )

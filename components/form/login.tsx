@@ -35,9 +35,7 @@ export type LoginSchemaType = z.infer<typeof schema>
 export function LoginForm({
   performAction,
 }: {
-  performAction: (
-    values: LoginSchemaType
-  ) => Promise<{ error?: { message?: string } }>
+  performAction: (values: LoginSchemaType) => Promise<{ error?: string | null }>
 }) {
   const t = useTranslations()
   const searchParams = useSearchParams()
@@ -52,7 +50,7 @@ export function LoginForm({
 
   async function onSubmit(values: LoginSchemaType) {
     const { error } = await performAction(values)
-    if (error) return toast.error(error.message)
+    if (error) return toast.error(error)
     toast.success("Login successful")
     const path = searchParams.get("redirectUrl") || "/"
     router.push(path)

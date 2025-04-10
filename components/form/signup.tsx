@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { AuthResponse } from "@supabase/supabase-js"
 import { useTranslations } from "next-intl"
 import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
@@ -35,7 +34,9 @@ export type SignupSchemaType = z.infer<typeof schema>
 export function SignupForm({
   performAction,
 }: {
-  performAction: (values: SignupSchemaType) => Promise<AuthResponse>
+  performAction: (
+    values: SignupSchemaType
+  ) => Promise<{ error?: string | null }>
 }) {
   const t = useTranslations()
   const searchParams = useSearchParams()
@@ -49,8 +50,8 @@ export function SignupForm({
   })
 
   async function onSubmit(values: SignupSchemaType) {
-    const res = await performAction(values)
-    if (res.error) return toast.error(res.error.message)
+    const { error } = await performAction(values)
+    if (error) return toast.error(error)
     const path = searchParams.get("redirectUrl") || "/"
     router.push(path)
   }
