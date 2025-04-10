@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { AuthTokenResponsePassword } from "@supabase/supabase-js"
 import { useTranslations } from "next-intl"
 import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
@@ -36,7 +35,9 @@ export type LoginSchemaType = z.infer<typeof schema>
 export function LoginForm({
   performAction,
 }: {
-  performAction: (values: LoginSchemaType) => Promise<AuthTokenResponsePassword>
+  performAction: (
+    values: LoginSchemaType
+  ) => Promise<{ error?: { message?: string } }>
 }) {
   const t = useTranslations()
   const searchParams = useSearchParams()
