@@ -30,7 +30,7 @@ const DemoSignInBtn = () => {
       disabled={isLoading}
     >
       <UserIcon className="mr-2 h-4 w-4" />
-      {t("Sign in with Demo Account")}
+      {t("Demo Account")}
     </Button>
   )
 }
