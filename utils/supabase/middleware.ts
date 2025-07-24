@@ -36,7 +36,7 @@ export const updateSession = async (request: NextRequest) => {
   // https://supabase.com/docs/guides/auth/server-side/nextjs
   const userRes = await supabase.auth.getUser()
 
-  const isAtAuthRoute = ["/login", "/signup"].some((route) =>
+  const isAtAuthRoute = ["/login", "/signup", "/confirm-email"].some((route) =>
     request.nextUrl.pathname.startsWith(route)
   )
 

@@ -1,4 +1,3 @@
-import { signInWithGoogle } from "@/app/actions/auth"
 import { Button } from "@/components/ui/button"
 import { useTranslations } from "next-intl"
 
@@ -6,12 +5,7 @@ const GoogleSignInBtn = ({ redirectUrl }: { redirectUrl: string | null }) => {
   const t = useTranslations()
 
   return (
-    <Button
-      type="button"
-      variant="outline"
-      className="w-full"
-      onClick={() => signInWithGoogle({ redirectUrl })}
-    >
+    <Button type="button" variant="outline" className="w-full">
       <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
         <path
           fill="currentColor"

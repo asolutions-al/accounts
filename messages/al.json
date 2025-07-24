@@ -19,5 +19,22 @@
   "Sign in with Demo Account": "Hyr me llogari demo",
   "Or continue with": "Ose vazhdo me",
   "Log in": "Hyr",
-  "Demo Account": "Llogari Demo"
+  "Demo Account": "Llogari Demo",
+  "Check Your Email": "Kontrollo Emailin Tënd",
+  "We've sent a confirmation link to": "Kemi dërguar një link konfirmimi te",
+  "Click the link in the email to confirm your account and complete registration": "Kliko linkun në email për të konfirmuar llogarinë tënde dhe për të përfunduar regjistrimin",
+  "Back to login": "Kthehu te hyrja",
+  "Confirmation email sent": "Emaili i konfirmimit u dërgua",
+  "Login successful": "Hyrja u krye me sukses",
+  "Verification code sent": "Kodi i verifikimit u dërgua",
+  "Verify Email": "Verifiko Emailin",
+  "Enter the verification code": "Shkruaj kodin e verifikimit",
+  "We sent a verification code to": "Kemi dërguar një kod verifikimi te",
+  "Enter the 6-digit code from your email": "Shkruaj kodin 6-shifror nga emaili yt",
+  "Verification Code": "Kodi i Verifikimit",
+  "Verify": "Verifiko",
+  "Resend Code": "Ri-dërgo Kodin",
+  "Invalid verification code": "Kod verifikimi i pavlefshëm",
+  "Email verified successfully": "Emaili u verifikua me sukses",
+  "Code resent successfully": "Kodi u ri-dërgua me sukses"
 }

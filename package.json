@@ -5,7 +5,8 @@
     "build": "next build",
     "start": "next start",
     "drizzle:introspect": "drizzle-kit introspect",
-    "fmt": "prettier --write ."
+    "fmt": "prettier --write .",
+    "tsc": "tsc --noEmit"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.5.4",

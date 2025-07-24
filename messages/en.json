@@ -19,5 +19,22 @@
   "Sign in with Demo Account": "Sign in with Demo Account",
   "Or continue with": "Or continue with",
   "Log in": "Log in",
-  "Demo Account": "Demo Account"
+  "Demo Account": "Demo Account",
+  "Check Your Email": "Check Your Email",
+  "We've sent a confirmation link to": "We've sent a confirmation link to",
+  "Click the link in the email to confirm your account and complete registration": "Click the link in the email to confirm your account and complete registration",
+  "Back to login": "Back to login",
+  "Confirmation email sent": "Confirmation email sent",
+  "Login successful": "Login successful",
+  "Verification code sent": "Verification code sent",
+  "Verify Email": "Verify Email",
+  "Enter the verification code": "Enter the verification code",
+  "We sent a verification code to": "We sent a verification code to",
+  "Enter the 6-digit code from your email": "Enter the 6-digit code from your email",
+  "Verification Code": "Verification Code",
+  "Verify": "Verify",
+  "Resend Code": "Resend Code",
+  "Invalid verification code": "Invalid verification code",
+  "Email verified successfully": "Email verified successfully",
+  "Code resent successfully": "Code resent successfully"
 }

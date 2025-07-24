@@ -13,10 +13,10 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useTranslations } from "next-intl"
 import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
+import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { toast } from "sonner"
 import { z } from "zod"
-import { DemoSignInBtn } from "../button"
 import {
   Form,
   FormControl,
@@ -28,35 +28,56 @@ import {
 
 const schema = z.object({
   email: z.string().email(),
-  password: z.string().min(8),
+  code: z.string().length(6, "Verification code must be 6 digits"),
 })
 
 type SchemaT = z.infer<typeof schema>
 
-export function SignupForm({
-  performAction,
+export function ConfirmEmailForm({
+  email,
+  verifyAction,
+  resendAction,
 }: {
-  performAction: (values: SchemaT) => Promise<{ error?: string | null }>
+  email: string
+  verifyAction: (values: SchemaT) => Promise<ResT<true>>
+  resendAction: (email: string) => Promise<ResT<true>>
 }) {
   const t = useTranslations()
-  const searchParams = useSearchParams()
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const [isResending, setIsResending] = useState(false)
 
   const form = useForm<SchemaT>({
     resolver: zodResolver(schema),
     defaultValues: {
-      email: "",
-      password: "",
+      email: email,
+      code: "",
     },
   })
 
   async function onSubmit(values: SchemaT) {
-    const { error } = await performAction(values)
-    if (error) return toast.error(error)
-    const params = new URLSearchParams(searchParams)
-    params.set("email", values.email)
-    router.push(`/confirm-email?${params.toString()}`)
-    toast.success(t("Verification code sent"))
+    const result = await verifyAction(values)
+
+    if (result.error) {
+      return toast.error(result.error.message)
+    }
+
+    if (result.success) {
+      toast.success(t("Email verified successfully"))
+      const path = searchParams.get("redirectUrl") || "/"
+      router.push(path)
+    }
+  }
+
+  async function handleResendCode() {
+    setIsResending(true)
+    const result = await resendAction(email)
+
+    if (result.success) toast.success(t("Code resent successfully"))
+
+    if (result.error) toast.error(result.error.message)
+
+    setIsResending(false)
   }
 
   return (
@@ -64,9 +85,9 @@ export function SignupForm({
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <Card className="mx-auto max-w-sm">
           <CardHeader>
-            <CardTitle className="text-xl">{t("Sign Up")}</CardTitle>
+            <CardTitle className="text-xl">{t("Verify Email")}</CardTitle>
             <CardDescription>
-              {t("Enter your information to create an account")}
+              {t("We sent a verification code to")} <strong>{email}</strong>
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -74,30 +95,16 @@ export function SignupForm({
               <div className="grid gap-2">
                 <FormField
                   control={form.control}
-                  name="email"
+                  name="code"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>{t("Email")}</FormLabel>
-                      <FormControl>
-                        <Input placeholder="example@gmail/com" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <div className="grid gap-2">
-                <FormField
-                  control={form.control}
-                  name="password"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>{t("Password")}</FormLabel>
+                      <FormLabel>{t("Verification Code")}</FormLabel>
                       <FormControl>
                         <Input
-                          type="password"
+                          placeholder="123456"
                           {...field}
-                          placeholder="••••••••"
+                          maxLength={6}
+                          className="text-center text-lg tracking-widest"
                         />
                       </FormControl>
                       <FormMessage />
@@ -105,32 +112,32 @@ export function SignupForm({
                   )}
                 />
               </div>
+              <p className="text-center text-sm text-muted-foreground">
+                {t("Enter the 6-digit code from your email")}
+              </p>
               <Button
                 type="submit"
                 className="w-full"
                 disabled={form.formState.isSubmitting}
               >
-                {t("Create an account")}
+                {t("Verify")}
               </Button>
-              <div className="relative">
-                <div className="absolute inset-0 flex items-center">
-                  <span className="w-full border-t" />
-                </div>
-                <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-background px-2 text-muted-foreground">
-                    {t("Or continue with")}
-                  </span>
-                </div>
-              </div>
-              <DemoSignInBtn />
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full"
+                onClick={handleResendCode}
+                disabled={isResending}
+              >
+                {t("Resend Code")}
+              </Button>
             </div>
             <div className="mt-4 text-center text-sm">
-              {t("Already have an account")}?{" "}
               <Link
                 href={`/login?${searchParams.toString()}`}
                 className="underline"
               >
-                {t("Sign in")}
+                {t("Back to login")}
               </Link>
             </div>
           </CardContent>
