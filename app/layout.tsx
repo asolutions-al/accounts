@@ -5,7 +5,7 @@ import { GeistSans } from "geist/font/sans"
 import "./globals.css"
 
 export const metadata = {
-  title: "Accounts Asolutions",
+  title: "Asolutions",
   description: "Menaxho biznesin tënd.",
 }
 
