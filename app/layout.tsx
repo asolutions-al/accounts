@@ -1,5 +1,6 @@
 import { Toaster } from "@/components/ui/sonner"
 import { TranslationProvider } from "@/providers"
+import { Analytics } from "@vercel/analytics/next"
 import { GeistSans } from "geist/font/sans"
 import "./globals.css"
 
@@ -19,6 +20,7 @@ export default async function RootLayout({
         <body className="flex min-h-dvh items-center justify-center">
           {children}
           <Toaster />
+          <Analytics />
         </body>
       </TranslationProvider>
     </html>
