@@ -1,3 +1,3 @@
-export { ConfirmEmailForm } from "./confirm-email"
-export { LoginForm } from "./login"
-export { SignupForm } from "./signup"
+export * from "./confirm-email"
+export * from "./login"
+export * from "./signup"
