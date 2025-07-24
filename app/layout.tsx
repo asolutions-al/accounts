@@ -4,8 +4,8 @@ import { GeistSans } from "geist/font/sans"
 import "./globals.css"
 
 export const metadata = {
-  title: "Asolution Accounts",
-  description: "Kick off your business with ASolutions",
+  title: "Accounts Asolutions",
+  description: "Menaxho biznesin tënd.",
 }
 
 export default async function RootLayout({
