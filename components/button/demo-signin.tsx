@@ -17,7 +17,7 @@ const DemoSignInBtn = () => {
   const handleDemoSignIn = async () => {
     setIsLoading(true)
     const res = await signInWithDemo({ redirectUrl })
-    if (res.error) toast.error(res.error)
+    if (res?.error) toast.error(res.error)
     setIsLoading(false)
   }
 
