@@ -5,13 +5,13 @@ import { createClient } from "@/utils/supabase/server"
 import { redirect } from "next/navigation"
 
 interface PageProps {
-  searchParams: {
+  searchParams: Promise<{
     email?: string
-  }
+  }>
 }
 
-const Page = ({ searchParams }: PageProps) => {
-  const email = searchParams.email
+const Page = async ({ searchParams }: PageProps) => {
+  const { email } = await searchParams
 
   if (!email) {
     redirect("/signup")
