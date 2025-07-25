@@ -1,4 +1,4 @@
-export function AnimatedLogoSvg({ animate = true }: { animate?: boolean }) {
+export function AnimatedLogoSvg() {
   return (
     <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -23,7 +23,7 @@ export function AnimatedLogoSvg({ animate = true }: { animate?: boolean }) {
 
       <path
         d="m 150 200 l -15 -30 l 50 0 l 15 30 h -50 "
-        fill="red"
+        fill="#2e6f40"
         opacity="0"
       >
         <animate
