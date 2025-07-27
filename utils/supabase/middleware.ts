@@ -1,3 +1,4 @@
+import { DOMAIN } from "@/constants/env"
 import { createServerClient } from "@supabase/ssr"
 import { type NextRequest, NextResponse } from "next/server"
 
@@ -23,7 +24,7 @@ export const updateSession = async (request: NextRequest) => {
           })
           cookiesToSet.forEach(({ name, value, options }) =>
             response.cookies.set(name, value, {
-              domain: isDev ? "localhost" : ".asolutions.al", // https://github.com/supabase/supabase/issues/473#issuecomment-2543434925
+              domain: DOMAIN, // https://github.com/supabase/supabase/issues/473#issuecomment-2543434925
               ...options,
             })
           )

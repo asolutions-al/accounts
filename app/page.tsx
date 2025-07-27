@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { ERP_URL } from "@/constants/env"
 import { createClient } from "@/utils/supabase/server"
 import {
   ArrowRight,
@@ -18,8 +19,6 @@ import {
 } from "lucide-react"
 import Image from "next/image"
 import { redirect } from "next/navigation"
-
-const erpSiteUrl = process.env.ERP_SITE_URL
 
 const Page = async () => {
   const client = await createClient()
@@ -110,7 +109,7 @@ const Page = async () => {
               <CardFooter className="flex flex-col gap-3 sm:flex-row">
                 <Button size="lg" className="w-full sm:w-auto" asChild>
                   <a
-                    href={`${erpSiteUrl}/auth/callback`}
+                    href={`${ERP_URL}/auth/callback`}
                     className="inline-flex items-center"
                   >
                     Launch ERP System
@@ -124,7 +123,7 @@ const Page = async () => {
                   asChild
                 >
                   <a
-                    href={`${erpSiteUrl}/auth/callback`}
+                    href={`${ERP_URL}/auth/callback`}
                     className="inline-flex items-center"
                     target="_blank"
                   >

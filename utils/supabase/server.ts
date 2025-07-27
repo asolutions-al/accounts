@@ -1,3 +1,4 @@
+import { DOMAIN } from "@/constants/env"
 import { createServerClient } from "@supabase/ssr"
 import { cookies } from "next/headers"
 
@@ -18,7 +19,7 @@ export async function createClient() {
           try {
             cookiesToSet.forEach(({ name, value, options }) =>
               cookieStore.set(name, value, {
-                domain: isDev ? "localhost" : ".asolutions.al", // https://github.com/supabase/supabase/issues/473#issuecomment-2543434925
+                domain: DOMAIN, // https://github.com/supabase/supabase/issues/473#issuecomment-2543434925
                 ...options,
               })
             )
