@@ -105,6 +105,7 @@ export function ConfirmEmailForm({
                           {...field}
                           maxLength={6}
                           className="text-center text-lg tracking-widest"
+                          autoFocus
                         />
                       </FormControl>
                       <FormMessage />
