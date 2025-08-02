@@ -3,8 +3,9 @@
 import { AuthButton } from "@/components/button/auth-button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
+import { PasswordInput } from "@/components/ui/password-input"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { ArrowRight, Lock, Mail } from "lucide-react"
+import { ArrowRight, Mail } from "lucide-react"
 import { useTranslations } from "next-intl"
 import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
@@ -103,15 +104,11 @@ export function LoginForm({
                   <FormItem>
                     <FormLabel>{t("Password")}</FormLabel>
                     <FormControl>
-                      <div className="relative">
-                        <Lock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-muted-foreground" />
-                        <Input
-                          type="password"
-                          placeholder="Enter your password"
-                          className="pl-10"
-                          {...field}
-                        />
-                      </div>
+                      <PasswordInput
+                        placeholder="Enter your password"
+                        className="pl-10"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
