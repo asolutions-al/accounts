@@ -17,7 +17,7 @@ export default async function RootLayout({
   return (
     <html lang="en" className={GeistSans.className} suppressHydrationWarning>
       <TranslationProvider>
-        <body className="flex min-h-dvh items-center justify-center">
+        <body className="min-h-dvh">
           {children}
           <Toaster />
           <Analytics />

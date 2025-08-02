@@ -1,15 +1,10 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { AuthButton } from "@/components/button/auth-button"
+import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { Lock, Mail, UserPlus } from "lucide-react"
 import { useTranslations } from "next-intl"
 import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
@@ -61,77 +56,92 @@ export function SignupForm({
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <Card className="mx-auto max-w-sm">
-          <CardHeader>
-            <CardTitle className="text-xl">{t("Sign Up")}</CardTitle>
-            <CardDescription>
-              {t("Enter your information to create an account")}
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="grid gap-4">
-              <div className="grid gap-2">
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>{t("Email")}</FormLabel>
-                      <FormControl>
-                        <Input placeholder="example@gmail/com" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <div className="grid gap-2">
-                <FormField
-                  control={form.control}
-                  name="password"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>{t("Password")}</FormLabel>
-                      <FormControl>
-                        <Input
-                          type="password"
-                          {...field}
-                          placeholder="••••••••"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <Button
-                type="submit"
-                className="w-full"
-                disabled={form.formState.isSubmitting}
-              >
-                {t("Create an account")}
-              </Button>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <Card>
+          <CardContent className="space-y-6 pt-6">
+            {/* Continue with section - moved to top */}
+            <div className="space-y-4">
+              <DemoSignInBtn />
+
               <div className="relative">
                 <div className="absolute inset-0 flex items-center">
                   <span className="w-full border-t" />
                 </div>
                 <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-background px-2 text-muted-foreground">
+                  <span className="bg-background px-3 text-muted-foreground">
                     {t("Or continue with")}
                   </span>
                 </div>
               </div>
-              <DemoSignInBtn />
             </div>
-            <div className="mt-4 text-center text-sm">
-              {t("Already have an account")}?{" "}
-              <Link
-                href={`/login?${searchParams.toString()}`}
-                className="underline"
-              >
-                {t("Sign in")}
-              </Link>
+
+            {/* Email and Password fields */}
+            <div className="space-y-4">
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t("Email Address")}</FormLabel>
+                    <FormControl>
+                      <div className="relative">
+                        <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-muted-foreground" />
+                        <Input
+                          placeholder="Enter your email"
+                          className="pl-10"
+                          {...field}
+                        />
+                      </div>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t("Password")}</FormLabel>
+                    <FormControl>
+                      <div className="relative">
+                        <Lock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-muted-foreground" />
+                        <Input
+                          type="password"
+                          placeholder="Create a strong password"
+                          className="pl-10"
+                          {...field}
+                        />
+                      </div>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+
+            {/* Create Account Button */}
+            <AuthButton
+              type="submit"
+              icon={UserPlus}
+              size="lg"
+              loading={form.formState.isSubmitting}
+            >
+              {t("Create Account")}
+            </AuthButton>
+
+            {/* Sign In Link */}
+            <div className="text-center">
+              <p className="text-sm text-muted-foreground">
+                {t("Already have an account")}?{" "}
+                <Link
+                  href={`/login?${searchParams.toString()}`}
+                  className="font-semibold text-foreground hover:underline"
+                >
+                  {t("Sign in")}
+                </Link>
+              </p>
             </div>
           </CardContent>
         </Card>

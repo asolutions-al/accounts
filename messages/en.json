@@ -8,7 +8,7 @@
   "Email": "Email",
   "Login": "Login",
   "Enter your email below to login to your account": "Enter your email below to login to your account",
-  "Dont have an account": "Dont have an account",
+  "Dont have an account": "Don't have an account",
   "Already have an account": "Already have an account",
   "Create an account": "Create an account",
   "Sign in": "Sign in",
@@ -36,5 +36,10 @@
   "Resend Code": "Resend Code",
   "Invalid verification code": "Invalid verification code",
   "Email verified successfully": "Email verified successfully",
-  "Code resent successfully": "Code resent successfully"
+  "Code resent successfully": "Code resent successfully",
+  "Email Address": "Email Address",
+  "Create Account": "Create Account",
+  "Create account": "Create account",
+  "Sign In": "Sign In",
+  "Don't have an account": "Don't have an account"
 }

@@ -36,5 +36,10 @@
   "Resend Code": "Ri-dërgo Kodin",
   "Invalid verification code": "Kod verifikimi i pavlefshëm",
   "Email verified successfully": "Emaili u verifikua me sukses",
-  "Code resent successfully": "Kodi u ri-dërgua me sukses"
+  "Code resent successfully": "Kodi u ri-dërgua me sukses",
+  "Sign In": "Hyr",
+  "Don't have an account": "Nuk keni llogari",
+  "Create account": "Krijo llogarinë",
+  "Email Address": "Emaili",
+  "Create Account": "Krijo llogarinë"
 }
