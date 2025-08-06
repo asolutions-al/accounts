@@ -41,7 +41,7 @@ export function AuthLayout({
 
         {/* Footer */}
         <div className="text-center text-xs text-muted-foreground">
-          <p>© 2024 Your Company. All rights reserved.</p>
+          <p>© 2025 Asolutions. All rights reserved.</p>
         </div>
       </div>
     </div>
